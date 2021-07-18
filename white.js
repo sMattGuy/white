@@ -46,6 +46,8 @@ client.on('message', message => {
 				m.react('🇹');
 				m.react('🇪');
 				m.react('840847797284372490');
+			}).catch(e => {
+				console.log(e);
 			});
 			prevMessage = '0';
 		}
