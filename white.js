@@ -12,7 +12,7 @@ client.on('ready', () => {
   client.user.setPresence({
     status: 'online',
     activity: {
-        name: 'for !cc help',
+        name: 'for WHITE!',
         type: "WATCHING"
     }
   });
@@ -29,7 +29,7 @@ client.on('message', message => {
    client.user.setPresence({
       status: 'online',
 		activity: {
-         name: 'for !cc help',
+         name: 'for WHITE!',
          type: "WATCHING"
       }
    });
@@ -45,7 +45,7 @@ client.on('message', message => {
 				m.react('🇮');
 				m.react('🇹');
 				m.react('🇪');
-				m.react('⚪');
+				m.react('840847797284372490');
 			});
 			prevMessage = '0';
 		}
