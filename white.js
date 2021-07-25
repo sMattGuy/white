@@ -6,7 +6,8 @@ const fs = require('fs');
 const client = new Discord.Client();
 // import token and database
 const credentials = require('./auth.json');
-let prevMessage = '0';
+
+const messageMap = new Map();
 //sets ready presense
 client.on('ready', () => {
   client.user.setPresence({
@@ -33,11 +34,11 @@ client.on('message', message => {
       }
    });
 	if(message.content === 'WHITE!'){
-		if(prevMessage == '0'){
+		if(!messageMap.has(message.channel.id)){
 			console.log('No message to WHITE!');
 		}
 		else{
-			let whiteMessage = message.channel.messages.fetch(prevMessage).then(m => {
+			let whiteMessage = message.channel.messages.fetch(messageMap.get(message.channel.id)).then(m => {
 				m.react('⬜');
 				m.react('🇼');
 				m.react('🇭');
@@ -48,11 +49,11 @@ client.on('message', message => {
 			}).catch(e => {
 				console.log(e);
 			});
-			prevMessage = '0';
+			messageMap.delete(message.channel.id);
 		}
 	}
 	else{
-		prevMessage = message.id;
+		messageMap.set(message.channel.id,message.id);
 	}
 });
 // Log our bot in using the token from https://discord.com/developers/applications
