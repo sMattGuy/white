@@ -39,13 +39,14 @@ client.on('message', message => {
 		}
 		else{
 			let whiteMessage = message.channel.messages.fetch(messageMap.get(message.channel.id)).then(m => {
-				m.react('⬜');
-				m.react('🇼');
-				m.react('🇭');
-				m.react('🇮');
-				m.react('🇹');
-				m.react('🇪');
-				m.react('840847797284372490');
+				m.react('⬜')
+				.then(() => m.react('🇼'))
+				.then(() => m.react('🇭'))
+				.then(() => m.react('🇮'))
+				.then(() => m.react('🇹'))
+				.then(() => m.react('🇪'))
+				.then(() => m.react('840847797284372490'))
+				.catch(error => console.log(error));
 			}).catch(e => {
 				console.log(e);
 			});
@@ -58,18 +59,17 @@ client.on('message', message => {
 		}
 		else{
 			let whiteMessage = message.channel.messages.fetch(messageMap.get(message.channel.id)).then(m => {
-				m.react('🟫');
-				m.react('🇲');
-				m.react('🇪');
-				m.react('🇽');
-				m.react('🇮');
-				m.react('🇨');
-				m.react('🇦');
-				m.react('🇳'); 
-				m.react('691116720181739552');
-			}).catch(e => {
-				console.log(e);
-			});
+				m.react('🟫')
+				.then(() => m.react('🇲'))
+				.then(() => m.react('🇪'))
+				.then(() => m.react('🇽'))
+				.then(() => m.react('🇮'))
+				.then(() => m.react('🇨'))
+				.then(() => m.react('🇦'))
+				.then(() => m.react('🇳'))
+				.then(() => m.react('691116720181739552'))
+				.catch(error => console.log(error));
+			}).catch(e => console.log(e));
 			messageMap.delete(message.channel.id);
 		}
 	}
