@@ -52,6 +52,27 @@ client.on('message', message => {
 			messageMap.delete(message.channel.id);
 		}
 	}
+	else if(message.content === 'MEXICAN!'){
+		if(!messageMap.has(message.channel.id)){
+			console.log('No message to MEXICAN!');
+		}
+		else{
+			let whiteMessage = message.channel.messages.fetch(messageMap.get(message.channel.id)).then(m => {
+				m.react('🟫');
+				m.react('🇲');
+				m.react('🇪');
+				m.react('🇽');
+				m.react('🇮');
+				m.react('🇨');
+				m.react('🇦');
+				m.react('🇳'); 
+				m.react('691116720181739552');
+			}).catch(e => {
+				console.log(e);
+			});
+			messageMap.delete(message.channel.id);
+		}
+	}
 	else{
 		messageMap.set(message.channel.id,message.id);
 	}
